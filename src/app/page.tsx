@@ -6,7 +6,7 @@ import { PushNotificationManager } from "./pushNotificationManager";
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex">
       <PushNotificationManager />
       <InstallPrompt />
     </div>

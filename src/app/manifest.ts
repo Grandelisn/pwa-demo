@@ -6,17 +6,34 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: 'NextPWA',
     description: 'A Progressive Web App built with Next.js',
     start_url: '/',
+    id: '/',
     display: 'standalone',
     background_color: '#ffffff',
     theme_color: '#000000',
+    screenshots: [
+      {
+       "src": "/placeholder.png",
+        "sizes": "464x973",
+        "type": "image/png",
+        "form_factor": "wide",
+        "label": "Wonder Widgets"
+      },
+      {
+        "src": "/placeholder.png",
+         "sizes": "464x973",
+         "type": "image/png",
+         "form_factor": "narrow",
+         "label": "Wonder Widgets"
+       }
+    ],
     icons: [
       {
-        src: '/icon-192x192.png',
+        src: '/food_192.png',
         sizes: '192x192',
         type: 'image/png',
       },
       {
-        src: '/icon-512x512.png',
+        src: '/food.png',
         sizes: '512x512',
         type: 'image/png',
       },

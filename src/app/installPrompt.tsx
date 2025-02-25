@@ -1,13 +1,16 @@
 "use client"
 import { useState, useEffect } from 'react'
+import AddToHomeScreenButton from './addToHomeScreenButton'
 
 export default function InstallPrompt() {
     const [isIOS, setIsIOS] = useState(false)
     const [isStandalone, setIsStandalone] = useState(false)
    
     useEffect(() => {
+      console.log('useEffect');
+      console.log(navigator.userAgent);
       setIsIOS(
-        /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream
+        /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as unknown as { MSStream: unknown }).MSStream
       )
    
       setIsStandalone(window.matchMedia('(display-mode: standalone)').matches)
@@ -18,9 +21,9 @@ export default function InstallPrompt() {
     }
    
     return (
-      <div>
-        <h3>Install App</h3>
-        <button>Add to Home Screen</button>
+      <div className="grow basis-1/2">
+        <h3 className='text-2xl font-bold'>Install App</h3>
+        <AddToHomeScreenButton/>
         {isIOS && (
           <p>
             To install this app on your iOS device, tap the share button
@@ -28,7 +31,7 @@ export default function InstallPrompt() {
               {' '}
               ⎋{' '}
             </span>
-            and then "Add to Home Screen"
+            and then Add to Home Screen.
             <span role="img" aria-label="plus icon">
               {' '}
               ➕{' '}
