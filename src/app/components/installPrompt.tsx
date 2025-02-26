@@ -21,7 +21,7 @@ export default function InstallPrompt() {
     }
    
     return (
-      <div className="grow basis-1/2">
+      <div className="grow basis-1/3">
         <h3 className='text-2xl font-bold'>Install App</h3>
         <AddToHomeScreenButton/>
         {isIOS && (

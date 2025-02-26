@@ -1,9 +1,10 @@
 'use client'
  
 import { useState, useEffect } from 'react'
-import { subscribeUser, unsubscribeUser, sendNotification } from './actions'
-import { urlBase64ToUint8Array } from './urlBase64ToUint8Array'
+import { subscribeUser, unsubscribeUser, sendNotification } from '../actions'
+import { urlBase64ToUint8Array } from '../urlBase64ToUint8Array'
 import Button from './button'
+import TextInput from './textInput'
 
 export function PushNotificationManager() {
     const [isSupported, setIsSupported] = useState(false)
@@ -29,16 +30,16 @@ export function PushNotificationManager() {
     }
    
     async function subscribeToPush() {
-      const registration = await navigator.serviceWorker.ready
+      const registration = await navigator.serviceWorker.ready;
       const sub = await registration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(
           process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!
         ),
-      })
-      setSubscription(sub)
-      const serializedSub = JSON.parse(JSON.stringify(sub))
-      await subscribeUser(serializedSub)
+      });
+      setSubscription(sub);
+      const serializedSub = JSON.parse(JSON.stringify(sub));
+      await subscribeUser(serializedSub);
     }
    
     async function unsubscribeFromPush() {
@@ -53,19 +54,17 @@ export function PushNotificationManager() {
         setMessage('')
       }
     }
-   
     if (!isSupported) {
       return <p>Push notifications are not supported in this browser.</p>
     }
-   
     return (
-      <div className="grow basis-1/2">
+      <div className="grow basis-1/3">
         <h3 className='text-2xl font-bold'>Push Notifications</h3>
         {subscription ? (
           <>
             <p>You are subscribed to push notifications.</p>
             <Button onClick={unsubscribeFromPush} >Unsubscribe</Button>
-            <input
+            <TextInput
               type="text"
               placeholder="Enter notification message"
               value={message}
