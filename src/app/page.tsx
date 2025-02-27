@@ -5,7 +5,6 @@ import { AppContext } from "./appContext";
 import Card from "./components/card";
 import InstallPrompt from "./components/installPrompt";
 import { PushNotificationManager } from "./components/pushNotificationManager";
-import Button from "./components/button";
 
 
 export default function Home() {
@@ -26,7 +25,6 @@ export default function Home() {
         <InstallPrompt />
         <PushNotificationManager />
         <Card />
-        <Button onClick={() => setOnline(!online)}>Toggle Online</Button>
     </div>
   )
 };

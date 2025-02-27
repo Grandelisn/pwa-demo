@@ -34,7 +34,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         setOnline(true);
         const formData = JSON.parse(sessionStorage.getItem("formData")!);
         if(!formData.uploaded){
-            console.log('non-saved data detected, saving to server');
+            alert('non-saved data detected, saving to server');
             // save to server
             // pull fresh data from server
             // setFormData(freshData);
