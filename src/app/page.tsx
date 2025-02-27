@@ -17,7 +17,7 @@ export default function Home() {
     )
     setOnline(navigator.onLine);
     setIsStandalone(window.matchMedia('(display-mode: standalone)').matches)
-  }, [])
+  }, [navigator.onLine])
 
   return (
     <div className="flex flex-col gap-4 md:flex-row mx-4">

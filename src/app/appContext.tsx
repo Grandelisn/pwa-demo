@@ -19,7 +19,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [formData, setFormData] = useState<BurgerFormData | null>(null);
   const [isStandalone, setIsStandalone] = useState<boolean>(false)
   const [isIOS, setIsIOS] = useState<boolean>(false);
-  const [online, setOnline] = useState<boolean>(navigator.onLine);
+  const [online, setOnline] = useState<boolean>(true);
   useEffect(()=>{
     window.addEventListener("offline", () => {
         console.log("offline");

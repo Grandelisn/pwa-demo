@@ -61,7 +61,7 @@ export function PushNotificationManager() {
       <div className="grow basis-1/3">
         <h3 className='text-2xl font-bold'>Push Notifications</h3>
         {subscription ? (
-          <>
+          <div className='flex flex-col gap-4'>
             <p>You are subscribed to push notifications.</p>
             <Button onClick={unsubscribeFromPush} >Unsubscribe</Button>
             <TextInput
@@ -71,7 +71,7 @@ export function PushNotificationManager() {
               onChange={(e) => setMessage(e.target.value)}
             />
             <Button onClick={sendTestNotification}>Send Test</Button>
-          </>
+          </div>
         ) : (
           <>
             <p>You are not subscribed to push notifications.</p>
