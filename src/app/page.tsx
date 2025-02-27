@@ -9,15 +9,18 @@ import { PushNotificationManager } from "./components/pushNotificationManager";
 
 export default function Home() {
   const {setIsStandalone, setIsIOS, online, setOnline } = useContext(AppContext);
+
   useEffect(() => {
     console.log('useEffect');
     console.log(navigator.userAgent);
-    setIsIOS(
-      /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as unknown as { MSStream: unknown }).MSStream
-    )
-    setOnline(navigator.onLine);
-    setIsStandalone(window.matchMedia('(display-mode: standalone)').matches)
-  }, [navigator.onLine])
+    if(typeof window !== 'undefined'){
+      setIsIOS(
+        /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as unknown as { MSStream: unknown }).MSStream
+      )
+      setOnline(navigator.onLine);
+      setIsStandalone(window.matchMedia('(display-mode: standalone)').matches)
+    }
+  }, [])
 
   return (
     <div className="flex flex-col gap-4 md:flex-row mx-4">
