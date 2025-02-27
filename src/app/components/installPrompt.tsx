@@ -1,27 +1,19 @@
 "use client"
-import { useState, useEffect } from 'react'
+import { useContext } from 'react'
 import AddToHomeScreenButton from './addToHomeScreenButton'
+import { AppContext } from '../appContext';
 
 export default function InstallPrompt() {
-    const [isIOS, setIsIOS] = useState(false)
-    const [isStandalone, setIsStandalone] = useState(false)
-   
-    useEffect(() => {
-      console.log('useEffect');
-      console.log(navigator.userAgent);
-      setIsIOS(
-        /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as unknown as { MSStream: unknown }).MSStream
-      )
-   
-      setIsStandalone(window.matchMedia('(display-mode: standalone)').matches)
-    }, [])
-   
+  const { isStandalone, isIOS } = useContext(AppContext);
+    
+  
+
     if (isStandalone) {
       return null // Don't show install button if already installed
     }
    
     return (
-      <div className="grow basis-1/3">
+      <div className="flex-col grow basis-1/3">
         <h3 className='text-2xl font-bold'>Install App</h3>
         <AddToHomeScreenButton/>
         {isIOS && (
